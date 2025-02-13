@@ -1,0 +1,24 @@
+superuser: admin
+pass: admin123
+
+Filter Successful Payments:
+from yourapp.models import Booking
+
+successful_bookings = Booking.objects.filter(payment_status="Successful")
+for booking in successful_bookings:
+    print(f"{booking.user.username} - {booking.vehicle.name} - {booking.location.city} - {booking.payment_status}")
+
+
+Filter Failed Payments:
+
+failed_bookings = Booking.objects.filter(payment_status="Failed")
+for booking in failed_bookings:
+    print(f"{booking.user.username} - {booking.vehicle.name} - {booking.location.city} - {booking.payment_status}")
+
+
+Get the Average Sales of Successful Bookings:
+
+from django.db.models import Avg
+average_sales = Booking.objects.filter(payment_status="Successful").aggregate(Avg('total_price'))['total_price__avg']
+
+print(f"Average sales from successful bookings: ₱{average_sales:.2f}" if average_sales else "No successful bookings found.")
