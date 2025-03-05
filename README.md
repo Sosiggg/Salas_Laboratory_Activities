@@ -1,0 +1,1 @@
+This repository contains all the codes we have done in our laboratory sessions, quizzes, practicals, and activities for our class on Integrative Programming and Technologies. It is for educational purposes only.
